@@ -1,4 +1,4 @@
-# Apparel-Image-Classification-with-WideResNet
+# Apparel Image Classification with WideResNet
 This project implements apparel image classification using the WideResNet architecture on the Fashion MNIST dataset. The implementation utilizes PyTorch and includes data preprocessing, model training, evaluation, and visualization.
 
 ## Table of Contents
@@ -45,11 +45,3 @@ The WideResNet model architecture includes:
 - **Validation Accuracy**: 90.5%
 - **Test Loss**: 0.258
 - **Test Accuracy**: 90.5%
-
-Validation accuracy over epochs:
-
-![Validation Accuracy](./images/validation_accuracy.png)
-
-Example predictions on test images:
-
-![Predictions](./images/predictions.png)
