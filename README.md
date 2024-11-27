@@ -45,3 +45,29 @@ The WideResNet model architecture includes:
 - **Validation Accuracy**: 90.5%
 - **Test Loss**: 0.258
 - **Test Accuracy**: 90.5%
+
+## Key Features
+- WideResNet architecture for improved performance
+- Early stopping mechanism
+- Training visualization
+- Model saved in PyTorch format (`fashion_mnist_model.pth`)
+
+## Technologies Used
+- Python
+- PyTorch
+- TensorFlow (for data loading)
+- Matplotlib
+
+## Libraries Used
+The following Python libraries are utilized in this project:
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+import torch
+import torch.nn as nn
+import torchvision
+from torchvision import transforms
+from torch.utils.data import DataLoader, TensorDataset
+from tensorflow.keras.datasets import fashion_mnist
+
