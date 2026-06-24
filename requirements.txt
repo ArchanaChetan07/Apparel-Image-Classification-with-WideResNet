@@ -1,0 +1,8 @@
+numpy
+matplotlib
+tensorflow
+keras
+keras-tuner
+torch
+torchvision
+jupyter
