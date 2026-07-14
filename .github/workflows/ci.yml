@@ -1,4 +1,4 @@
-name: CI Pipeline
+name: CI
 
 on:
   push:
@@ -8,33 +8,34 @@ on:
 
 jobs:
   test:
-    name: Lint and Test
+    name: Lint · Test · Smoke train
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
 
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.10"
+          python-version: "3.11"
           cache: pip
 
-      - name: Install dependencies
+      - name: Install CPU PyTorch + project deps
         run: |
-          pip install pytest pytest-cov flake8
-          pip install -r requirements.txt || true
+          pip install --upgrade pip
+          pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
+          pip install -r requirements-dev.txt
+          pip install -e .
 
-      - name: Lint with flake8
-        run: flake8 . --max-line-length=120 --ignore=E501,W503 --exclude=.git,__pycache__,.ipynb_checkpoints
-        continue-on-error: true
+      - name: Ruff lint
+        run: ruff check apparel_classifier tests
 
-      - name: Run tests
-        run: pytest tests/ -v --tb=short 2>/dev/null || echo "Tests completed"
+      - name: Pytest
+        run: pytest tests/ -v --tb=short --cov=apparel_classifier --cov-report=term-missing
 
-      - name: Upload coverage
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: test-results
-          path: .pytest_cache/
-          if-no-files-found: ignore
+      - name: Smoke train (narrow)
+        run: |
+          python -m apparel_classifier.train \
+            --narrow --subset-size 128 --epochs 1 --batch-size 32 \
+            --artifacts-dir artifacts --data-dir data
+          test -f artifacts/model_narrow.pt

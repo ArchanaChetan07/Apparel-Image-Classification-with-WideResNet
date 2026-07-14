@@ -1,0 +1,4 @@
+# Model checkpoints land here after training.
+# Keep the directory in git; ignore large binaries via root .gitignore patterns if needed.
+*
+!.gitkeep
