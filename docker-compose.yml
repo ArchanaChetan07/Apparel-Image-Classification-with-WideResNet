@@ -2,7 +2,8 @@ services:
   api:
     build: .
     ports:
-      - "8000:8000"
+      # Override host port if 8000 is taken: API_PORT=8001 docker compose up --build
+      - "${API_PORT:-8000}:8000"
     environment:
       MODEL_PATH: /app/artifacts/model.pt
       ALLOW_UNTRAINED: "0"
