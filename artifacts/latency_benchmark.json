@@ -1,0 +1,101 @@
+{
+  "pytorch": "2.6.0+cu124",
+  "cuda_available": true,
+  "cuda_name": "NVIDIA T1000 8GB",
+  "warmup": 20,
+  "repeats": 50,
+  "runs": [
+    {
+      "device": "cpu",
+      "narrow": false,
+      "params": 17117466,
+      "single_image": {
+        "n": 50,
+        "mean_ms": 16.854,
+        "median_ms": 16.681,
+        "p95_ms": 18.058,
+        "min_ms": 15.844,
+        "max_ms": 20.213
+      },
+      "batch_32": {
+        "n": 50,
+        "mean_ms": 215.743,
+        "median_ms": 214.06,
+        "p95_ms": 229.106,
+        "min_ms": 199.732,
+        "max_ms": 245.22,
+        "per_image_mean_ms": 6.742,
+        "per_image_median_ms": 6.689
+      }
+    },
+    {
+      "device": "cpu",
+      "narrow": true,
+      "params": 173778,
+      "single_image": {
+        "n": 50,
+        "mean_ms": 4.702,
+        "median_ms": 4.627,
+        "p95_ms": 5.261,
+        "min_ms": 4.078,
+        "max_ms": 6.313
+      },
+      "batch_32": {
+        "n": 50,
+        "mean_ms": 13.221,
+        "median_ms": 13.191,
+        "p95_ms": 14.173,
+        "min_ms": 11.883,
+        "max_ms": 14.393,
+        "per_image_mean_ms": 0.413,
+        "per_image_median_ms": 0.412
+      }
+    },
+    {
+      "device": "cuda",
+      "narrow": false,
+      "params": 17117466,
+      "single_image": {
+        "n": 50,
+        "mean_ms": 5.069,
+        "median_ms": 4.689,
+        "p95_ms": 7.926,
+        "min_ms": 3.786,
+        "max_ms": 8.441
+      },
+      "batch_32": {
+        "n": 50,
+        "mean_ms": 39.493,
+        "median_ms": 39.33,
+        "p95_ms": 42.065,
+        "min_ms": 35.981,
+        "max_ms": 42.906,
+        "per_image_mean_ms": 1.234,
+        "per_image_median_ms": 1.229
+      }
+    },
+    {
+      "device": "cuda",
+      "narrow": true,
+      "params": 173778,
+      "single_image": {
+        "n": 50,
+        "mean_ms": 1.648,
+        "median_ms": 1.521,
+        "p95_ms": 2.426,
+        "min_ms": 1.273,
+        "max_ms": 3.725
+      },
+      "batch_32": {
+        "n": 50,
+        "mean_ms": 2.411,
+        "median_ms": 1.762,
+        "p95_ms": 4.538,
+        "min_ms": 1.703,
+        "max_ms": 5.009,
+        "per_image_mean_ms": 0.075,
+        "per_image_median_ms": 0.055
+      }
+    }
+  ]
+}

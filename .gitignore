@@ -11,6 +11,11 @@ htmlcov/
 .ipynb_checkpoints/
 data/
 *.pth
+artifacts/*.pt
+artifacts/*.json
+artifacts/*.png
+!artifacts/.gitkeep
+!artifacts/latency_benchmark.json
 .env
 .venv/
 venv/

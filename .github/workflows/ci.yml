@@ -33,6 +33,12 @@ jobs:
       - name: Pytest
         run: pytest tests/ -v --tb=short --cov=apparel_classifier --cov-report=term-missing
 
+      - name: Latency benchmark (CPU, narrow — report only)
+        run: |
+          python scripts/benchmark_latency.py --narrow-only --warmup 10 --repeats 30 \
+            --out artifacts/latency_benchmark_ci.json
+          python -c "import json; print(json.load(open('artifacts/latency_benchmark_ci.json'))['runs'][0]['single_image'])"
+
       - name: Smoke train (narrow)
         run: |
           python -m apparel_classifier.train \
